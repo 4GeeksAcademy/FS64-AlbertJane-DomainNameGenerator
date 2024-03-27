@@ -9,7 +9,7 @@ flowchart TD;
     D[/Get the third array/]
     E[Make an array with all the possible concatenations]
     F[/Get that array/]
-    G[/Print it/]
+    G((Print it))
 
 A --> B --> C --> D --> E --> F --> G
 
