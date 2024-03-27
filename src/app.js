@@ -7,18 +7,16 @@ import "./assets/img/4geeks.ico";
 
 window.onload = function() {
   const main = () => {
-    const firstCombination = getFirstCombination();
-    const combinedArrays = getcombinedArrays(firstCombination);
-    const secondCombination = getSecondCombination(combinedArrays);
-    const combinedFinal = getcombinedArrays(secondCombination);
-    const addedDotCom = getAddedDotCom(combinedFinal);
+    const firstCombination = getCombination(["the", "our"], ["great", "big"]);
+    const secondCombination = getCombination(firstCombination, [
+      "jogger",
+      "raccoon"
+    ]);
+    const addedDotCom = getAddedDotCom(secondCombination);
     printDomainNames(addedDotCom);
   };
 
-  const getFirstCombination = () => {
-    const array1 = ["the", "our"];
-    const array2 = ["great", "big"];
-
+  const getCombination = (array1, array2) => {
     const result = array1.map(element => {
       const secondIteration = array2.map(item => {
         const resultSecond = element + item;
@@ -27,29 +25,15 @@ window.onload = function() {
 
       return secondIteration;
     });
-
-    return result;
+    const mergedArray = getCombinedArrays(result);
+    return mergedArray;
   };
-  const getcombinedArrays = arrays => {
+  const getCombinedArrays = arrays => {
     const mergedArray = arrays.reduce(
       (result, array) => result.concat(array),
       []
     );
     return mergedArray;
-  };
-  const getSecondCombination = array => {
-    const array2 = ["jogger", "racoon"];
-
-    const result = array.map(element => {
-      const secondResult = array2.map(item => {
-        const mergeElements = element + item;
-        return mergeElements;
-      });
-
-      return secondResult;
-    });
-
-    return result;
   };
   const getAddedDotCom = array => {
     const dotComArray = array.map(element => {
@@ -59,9 +43,13 @@ window.onload = function() {
     return dotComArray;
   };
   const printDomainNames = domainNames => {
+    const container = document.getElementById("container");
+    let cadena = "";
     domainNames.forEach(element => {
       console.log(element);
+      cadena += `<p class="px-5 py-2 bg-primary text-light mx-auto rounded"> ${element} </p>`;
     });
+    container.innerHTML = cadena;
   };
   main();
 };
