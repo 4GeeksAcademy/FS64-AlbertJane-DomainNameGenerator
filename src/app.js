@@ -12,8 +12,13 @@ window.onload = function() {
       "jogger",
       "raccoon"
     ]);
-    const addedDotCom = getAddedDotCom(secondCombination);
-    printDomainNames(addedDotCom);
+    const addedDots = getCombination(secondCombination, [
+      ".com",
+      ".es",
+      ".io",
+      ".us"
+    ]);
+    printDomainNames(addedDots);
   };
 
   const getCombination = (array1, array2) => {
@@ -35,19 +40,19 @@ window.onload = function() {
     );
     return mergedArray;
   };
-  const getAddedDotCom = array => {
-    const dotComArray = array.map(element => {
-      element += ".com";
-      return element;
-    });
-    return dotComArray;
-  };
+
   const printDomainNames = domainNames => {
     const container = document.getElementById("container");
     let cadena = "";
-    domainNames.forEach(element => {
+    domainNames.forEach((element, index) => {
       console.log(element);
-      cadena += `<p class="px-5 py-2 bg-primary text-light mx-auto rounded"> ${element} </p>`;
+      if (index % 3 === 0) {
+        cadena += "</div>";
+      }
+      if (index % 3 === 0 || index === 0) {
+        cadena += "<div class='row'>";
+      }
+      cadena += `<div class="col"><p class="px-5 py-2 bg-primary text-light mx-auto rounded"> ${element} </p></div>`;
     });
     container.innerHTML = cadena;
   };
