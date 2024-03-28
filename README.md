@@ -3,14 +3,13 @@
 
 
 flowchart TD;
-    A((Start))
-    B[/get the first array/]
-    C[/get the second array/]
-    D[/Get the third array/]
-    E[Make an array with all the possible concatenations]
-    F[/Get that array/]
-    G((Print it))
+    A((web load))
+    B[Make two arrays for the first 4 possible combinations]
+    C[\Reduce it to just one array/]
+    D[Make two arrays for the 8 possible combinations]
+    E[\Reduce it to 1 Array/]    
+    F((Print the 8 fields of the array))
 
-A --> B --> C --> D --> E --> F --> G
+A --> B --> C --> D --> E --> F
 
 ```
